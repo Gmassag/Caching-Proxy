@@ -5,7 +5,7 @@ A **lightweight HTTP caching proxy** in Go with Redis backend, inspired by [road
 **Features**
 
 * HTTP Proxy: forwards requests to origin servers
-* Redis Caching: in-memory cache with configurable TTL (default 60s)
+* Redis Caching: in-memory cache (default 60s)
 * `X-Cache` headers: `HIT` / `MISS`
 * Preserves original response headers
 * Docker-ready with logs for cache hits/misses and errors
@@ -36,7 +36,6 @@ docker run -d -p 6379:6379 redis:8.0.3-alpine
 export REDIS_URL=redis://localhost:6379
 export PORT=3000
 export ORIGIN=http://dummyjson.com
-export CACHE_TTL=60
 go run cmd/main.go
 ```
 
@@ -49,7 +48,6 @@ go run cmd/main.go
 | ORIGIN     | Upstream server URL     | -       | ✅        |
 | REDIS\_URL | Redis connection string | -       | ✅        |
 | PORT       | HTTP server port        | 3000    | ❌        |
-| CACHE\_TTL | Cache TTL in seconds    | 60      | ❌        |
 
 ---
 
